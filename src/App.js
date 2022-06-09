@@ -1,17 +1,15 @@
-import logo from './icono.webp';
+import React, {Component} from "react";
 import './App.css';
+import Navigation from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Brenda Sarai Muñoz Pluma</h1>
-      <h1>SkinCare</h1>
-      <header className="">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    <p>Este sitio contendrá información relevante acerca de los cuidados de la piel.</p>
-  </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <div className="App">
+        <Navigation />
+    </div>
+    );
+  }
 }
 
 export default App;
