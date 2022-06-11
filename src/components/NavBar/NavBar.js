@@ -1,18 +1,20 @@
 import './NavBar.css';
 import logo from './logo-blanco.webp';
+import CartWidget from '../CartWidget/CartWidget';
 const NavBar = () => {
   return (
     <div>
       <nav>
-        <div class="nav-wrapper">
-          <ul class="left">
+        <div className="nav-wrapper">
+          <ul className="left">
             <img src={logo} width="80px" alt="SkinCare" />
-            <li class="brand-logo">SkinCare</li>
+            <li className="brand-logo">SkinCare</li>
           </ul>
-          <ul class="right">
+          <ul className="right">
               <li>Rostro</li>
               <li>Cuerpo</li>
               <li>Cabello</li>
+              <li><CartWidget/></li>
           </ul>
           
         </div>
