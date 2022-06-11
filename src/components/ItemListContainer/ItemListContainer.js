@@ -1,12 +1,14 @@
 import { Card} from 'antd';
 import React from 'react';
-import 'antd/dist/antd.css';
+import  'antd/dist/antd.min.css';
+import ItemCount from "../ItemCount/ItemCount";
 
 const ItemListContainer = ({greeting}) => {
    return(
-      <Card>
-        {greeting}
-      </Card>
+      <Card size="small" title="Nueva Card"  style={{ width: 600 }}>
+      <p>{greeting}</p>
+      <ItemCount/>
+    </Card>
    );
 };
 
