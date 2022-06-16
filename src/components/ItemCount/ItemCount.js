@@ -2,11 +2,11 @@ import { Button, message} from 'antd';
 import React, { useState } from 'react';
 import {ShoppingCartOutlined} from '@ant-design/icons';
 
-const ItemCount = () => {
-    const [counter, setcounter] = useState(1);
+const ItemCount = ({stock,initial,onAdd}) => {
+    const [counter, setcounter] = useState(initial);
 
     const sumar = () => {
-        if(counter < 10){
+        if(counter < stock){
 		setcounter(counter + 1);
         }else{
             message.error('No hay suficientes productos en stock.',3);
@@ -14,7 +14,7 @@ const ItemCount = () => {
 	};
 
 	const restar = () => {
-		if(counter > 1){
+		if(counter > initial){
         setcounter(counter - 1);
         }else{
             message.error('Este es el minimo de productos a agregar',3);
@@ -30,7 +30,7 @@ const ItemCount = () => {
             <br></br>
             <br></br>
             <Button type="primary" size="large"
-                icon={<ShoppingCartOutlined />}> &nbsp;&nbsp; Agregar </Button>
+                icon={<ShoppingCartOutlined />} onClick={ () => onAdd (counter)}>Agregar </Button>
         </div>
     )
 };
