@@ -12,7 +12,7 @@ const NavBar = () => {
           </ul>
           <ul className="right">
               <li>Rostro</li>
-              <li>Cuerpo</li>
+              <li>Labios</li>
               <li>Cabello</li>
               <li><CartWidget/></li>
           </ul>

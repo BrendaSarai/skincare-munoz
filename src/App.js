@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <ItemListContainer greeting='Hola... Bienvenido a la tienda de SkinCare'/>
+        <ItemListContainer/>
       </div>
     );
   }

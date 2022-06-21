@@ -24,15 +24,15 @@ const ItemCount = ({stock,initial,onAdd}) => {
     return (
         <div>
         
-            <Button type="primary" size="middle" onClick={restar}>-</Button>
-            <Button>{counter}</Button>
-            <Button type="primary" size="middle" onClick={sumar}>+</Button>
+            <Button type="primary" size="middle" style={{ width: 60 }} onClick={restar}>-</Button>
+            <Button style={{ width: 67 }}>{counter}</Button>
+            <Button type="primary" size="middle" style={{ width: 60 }} onClick={sumar}>+</Button>
             <br></br>
             <br></br>
             <Button type="primary" size="large"
-                icon={<ShoppingCartOutlined />} onClick={ () => onAdd (counter)}>Agregar </Button>
+                icon={<ShoppingCartOutlined />} block onClick={ () => onAdd (counter)}>Agregar </Button>
         </div>
-    )
+    );
 };
 
 export default ItemCount;

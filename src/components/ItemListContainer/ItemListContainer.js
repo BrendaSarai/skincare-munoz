@@ -1,19 +1,30 @@
-import {Card, message} from 'antd';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import  'antd/dist/antd.min.css';
+import {Row, Col, Card, message, Divider} from 'antd';
 import ItemCount from "../ItemCount/ItemCount";
+import ItemList from "../ItemList/ItemList";
+import {getProducts, listadoProductos} from "../../data/data.js";
 
-const onAdd = (n) => {
-   message.success(`Se agregaron ${n} productos al carrito.`,3);
-   
-};
+const { Meta } = Card;
+
 
 const ItemListContainer = ({greeting}) => {
+   const [items, setItems] = useState([])
+   useEffect(() => {
+        getProducts()
+            .then(res => setItems(res))
+            .catch(err => console.log(err))
+   }, [])
    return(
-      <Card size="small" title="Nueva Card"  style={{ width: 600 }}>
-      <p>{greeting}</p>
-      <ItemCount initial={1} stock={10} onAdd={onAdd} />
-    </Card>
+
+      <Row>
+         
+         {
+            items.length > 0 ? <ItemList productos={items} />
+            : <div>Cargando...</div>
+         }
+     </Row>
+
    );
 };
 
