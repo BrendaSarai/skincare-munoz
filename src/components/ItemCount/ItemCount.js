@@ -24,9 +24,9 @@ const ItemCount = ({stock,initial,onAdd}) => {
     return (
         <div>
         
-            <Button type="primary" size="middle" style={{ width: 60 }} onClick={restar}>-</Button>
-            <Button style={{ width: 67 }}>{counter}</Button>
-            <Button type="primary" size="middle" style={{ width: 60 }} onClick={sumar}>+</Button>
+            <Button type="primary" size="middle" style={{ width: 90 }} onClick={restar}>-</Button>
+            <Button style={{ width: 72 }}>{counter}</Button>
+            <Button type="primary" size="middle" style={{ width: 90 }} onClick={sumar}>+</Button>
             <br></br>
             <br></br>
             <Button type="primary" size="large"
