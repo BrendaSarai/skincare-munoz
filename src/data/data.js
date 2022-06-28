@@ -3737,3 +3737,15 @@ export const getProductById = (id) =>{
         }, 500);
     })
 }
+
+export const getProductsByCategory = (categoria) =>{
+    return new Promise ((resolve,reject) => {
+        setTimeout(() => {
+            if(listadoProdutos.length>0){
+                resolve(listadoProdutos.filter(unProducto => unProducto.category === categoria))}
+            else{
+                reject("Sin datos")
+            } 
+        }, 500);
+    })
+}

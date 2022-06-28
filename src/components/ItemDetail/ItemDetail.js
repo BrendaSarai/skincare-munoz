@@ -35,4 +35,4 @@ const ItemDetail = ({id,img,name,description,brand,category,price}) => {
   )
 }
 
-export default ItemDetail;
+export default ItemDetail; 

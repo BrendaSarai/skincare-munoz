@@ -13,7 +13,7 @@ nav {
     position: relative;
 }
 
-nav li {
+nav .pag {
     color: #fff;
 }
 nav .brand-logo {
@@ -41,7 +41,7 @@ nav ul {
   list-style-type: none;
 }
 
-nav ul li {
+nav ul .pag {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   float: left;
@@ -50,11 +50,11 @@ nav ul li {
   list-style-type: none;
 }
 
-nav ul li.active {
+nav ul .pag .active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-nav ul li {
+nav ul .pag {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   font-size: 1.5rem;
@@ -63,7 +63,7 @@ nav ul li {
   padding: 0 30px;
   cursor: pointer;
 }
-nav ul li:hover {
+nav ul .pag :hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 

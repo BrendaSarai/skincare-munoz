@@ -1,5 +1,6 @@
 import { Row } from 'antd';
 import { useEffect, useState } from "react"
+import { useParams } from 'react-router';
 import { getProductById } from "../../data/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
 
@@ -7,7 +8,7 @@ function ItemDetailContainer() {
     const [item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const id = 83
+    let { id } = useParams();
 
     useEffect(() => {
         getProductById(id)

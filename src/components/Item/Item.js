@@ -1,5 +1,6 @@
 import React from 'react'
 import {Row, Col, Card, message, Typography, Button} from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Meta } = Card;
 const { Text } = Typography;
@@ -14,12 +15,12 @@ const Item = ({name,brand,image_link,price,id}) => {
               <Meta title={name} description={brand} />
               <Text strong>{price}</Text>{<br/>}
               {<br/>}
-              <Button type="primary" block size="large"> Ver más </Button>
-              {/*<ItemCount initial={1} stock={10} onAdd={onAdd} />*/}
+              <Link to={`/item/${id}`} type="primary" block size="large"> Ver más </Link>
+              
            </Card>
         </Col>
      </Row>
   )
 }
 
-export default Item;
+export default Item; 
