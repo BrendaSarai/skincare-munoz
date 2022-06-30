@@ -17,6 +17,7 @@ class App extends Component {
             <Route path='/' element={<ItemListContainerAll />} />
             <Route path='/category/:categoria' element={<ItemListContainer />} />
             <Route path='/item/:id' element={<ItemDetailContainer />} />
+            <Route path='/cart' />
           </Routes>
         </div>
       </Router>

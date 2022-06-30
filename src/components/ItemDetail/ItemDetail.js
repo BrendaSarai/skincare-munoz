@@ -1,16 +1,20 @@
-import { Col, Row, Descriptions, Typography, Card, message} from 'antd';
-import React from 'react';
+import { Col, Row, Descriptions, Typography, Card, message, Button} from 'antd';
+import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
 
 
 const { Title } = Typography;
 
-const onAdd = (n) => {
-  message.success(`Se agregaron ${n} productos al carrito.`,3);
-  
-};
 
 const ItemDetail = ({id,img,name,description,brand,category,price}) => {
+  const [cantidad,setCantidad] = useState(0);
+
+  const onAdd = (n) => {
+    message.success(`Se agregaron ${n} productos al carrito.`,3);
+    setCantidad(n);
+  };
+  
   return (
     <Row style={{marginTop:80}}>
       <Col span={12}>
@@ -27,7 +31,12 @@ const ItemDetail = ({id,img,name,description,brand,category,price}) => {
               cover={<img src={img} height={350}/>} bordered={false}>
               <Title level={3}>$ {price}</Title>{<br/>}
               {<br/>}
-              <ItemCount initial={1} stock={10} onAdd={onAdd} />
+              {cantidad===0 
+                ? 
+                <ItemCount initial={1} stock={10} onAdd={onAdd} />
+                : 
+                <Link to='/cart' ><Button type="primary" size="large" block>Comprar</Button></Link>
+              } 
            </Card>
       </Col>
 
