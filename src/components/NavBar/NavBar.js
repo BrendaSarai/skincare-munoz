@@ -2,8 +2,11 @@ import './NavBar.css';
 import logo from './logo-blanco.webp';
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../contexts/CartContext';
 
 const NavBar = () => {
+  const { totalProducts } = useCartContext();
+  let n = totalProducts();
   return (
     <div>
       <nav>
@@ -16,7 +19,7 @@ const NavBar = () => {
               <Link to="category/lipstick" className='pag'>Labiales</Link>
               <Link to="category/powder" className='pag'>Maquillaje</Link>
               <Link to="category/highlighter" className='pag'>Iluminadores</Link>
-              <li className='pag'><CartWidget/></li>
+              <Link to="cart/"><CartWidget/></Link>
           </ul>
           
         </div>

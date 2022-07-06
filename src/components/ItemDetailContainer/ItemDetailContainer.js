@@ -26,13 +26,13 @@ function ItemDetailContainer() {
         {
            loading ? <div>Cargando...</div>
            : <ItemDetail 
-                    id={item.id}
+                 /*   id={item.id}
                     img={item.image_link} 
                     name={item.name} 
                     description={item.description}
                     brand={item.brand}
                     category={item.category}
-                    price={item.price} />
+                    price={item.price} */ item={item} />
         }
         </Row>
     )
