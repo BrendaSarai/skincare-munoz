@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import { Space,  Badge  } from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons';
-import { useCartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 
 
 
 function CartWidget()  {
-   const {totalProducts} = useCartContext()
+   const {totalProducts} = useContext(CartContext);
    let n = totalProducts()
   return (
     <Space>

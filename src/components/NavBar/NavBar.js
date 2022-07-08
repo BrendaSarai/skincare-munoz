@@ -1,11 +1,12 @@
 import './NavBar.css';
 import logo from './logo-blanco.webp';
 import CartWidget from '../CartWidget/CartWidget';
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { useCartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 
 const NavBar = () => {
-  const { totalProducts } = useCartContext();
+  const { totalProducts } = useContext(CartContext);
   let n = totalProducts();
   return (
     <div>

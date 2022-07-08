@@ -1,8 +1,8 @@
 import { Col, Row, Descriptions, Typography, Card, message, Button} from 'antd';
-import { useEffect, useState } from "react"
+import React, { useContext, useState  } from 'react'
 import { Link } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
-import { useCartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 
 
 const { Title } = Typography;
@@ -13,7 +13,7 @@ const ItemDetail = ({item}) => {
   console.log('item que pasa',item)
   const [cantidad,setCantidad] = useState(0);
 
-  const { addItem } = useCartContext()
+  const { addItem } = useContext(CartContext);
 
   const onAdd = (n) => {
     message.success(`Se agregaron ${n} productos al carrito.`,3);
@@ -42,7 +42,7 @@ const ItemDetail = ({item}) => {
                 ? 
                 <ItemCount initial={1} stock={10} onAdd={onAdd} />
                 : 
-                <Link to='/cart' ><Button type="primary" size="large" block>Comprar</Button></Link>
+                <Link to='/cart' ><Button type="primary" size="large" block>Terminar mi compra</Button></Link>
               } 
            </Card>
       </Col>

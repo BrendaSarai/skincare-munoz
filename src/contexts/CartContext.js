@@ -1,13 +1,11 @@
 import React, { useContext,createContext, useState } from 'react';
 
 // 1 - CREAR EL CONTEXTO
-const CartContext = createContext([]);
-export const useCartContext = () => useContext(CartContext)
+//const CartContext = createContext([]);
+//export const useCartContext = () => useContext(CartContext)
+export const CartContext = createContext();
 
-// STATE que le pasamos al useState
-const initialState = {
-	products: []
-};
+
 
 // 2 - CREAR EL COMPONENTE PROVIDER (CartProvider)
 export const CartProvider = ({ children }) => {
@@ -17,6 +15,12 @@ export const CartProvider = ({ children }) => {
         setCart([])
     };
 
+	const totalPay = () => {
+		let total = 0;
+		cart.forEach((item) => (total += item.cantidad * item.price));
+		return total;	
+	}
+
 	const totalProducts = () => {
 		let total = 0;
 		cart.forEach((item) => (total += item.cantidad));
@@ -25,7 +29,9 @@ export const CartProvider = ({ children }) => {
 	};
 
 	const removeItem = (id) => {
+		console.log(id)
 		setCart(cart.filter(products => products.id !== id))
+		console.log("cart2: ",cart)
 	}
 
 	const addItem = (item) => {
@@ -48,7 +54,7 @@ export const CartProvider = ({ children }) => {
 	};
 	// 3 - RETORNAMOS NUESTRO CONTEXT CON UN .PROVIDER
 	return (
-		<CartContext.Provider value={{cart, setCart, clear, removeItem, addItem, totalProducts}}>
+		<CartContext.Provider value={{cart, setCart, clear, removeItem, addItem, totalProducts, totalPay}}>
 			{/* 4 - PROPS.CHILDREN O BIEN CHILDREN */}
 			{children}
 		</CartContext.Provider>
