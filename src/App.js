@@ -10,6 +10,7 @@ import Cart from './components/cart/Cart'
 // 5 - IMPORTAR NUESTRO HOC PROVIDER Y ENVOLVER NUESTRA APP
 import { CartProvider } from './contexts/CartContext';
 
+
 class App extends Component {
   render(){
     return (

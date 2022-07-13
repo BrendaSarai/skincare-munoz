@@ -1,8 +1,11 @@
 import { Row } from 'antd';
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router';
-import { getProductById } from "../../data/data"
+//import { getProductById } from "../../data/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
+
+import { collection, query, getDocs, where } from 'firebase/firestore';
+import {db} from '../../firebase/firebaseConfig';
 
 function ItemDetailContainer() {
     const [item, setItem] = useState([])
@@ -10,14 +13,28 @@ function ItemDetailContainer() {
 
     let { id } = useParams();
 
+    console.log(id);
+
+    const getProductsById = async () =>{
+        const q =query(collection(db, 'skincare'), where ('id', '==', id));
+        const querySnapshot = await getDocs(q);
+        const docs = [];
+        querySnapshot.forEach((doc) => {
+           docs.push({...doc.data(), id: doc.id});
+        })
+        setItem(docs);
+        setLoading(false)
+    }
+     
     useEffect(() => {
-        getProductById(id)
+        getProductsById()
+        /*getProductById(id)
             .then(res => {
                 setItem(res)
                 setLoading(false)
             }
             )
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))*/
     }, [])
 
     console.log("item:", item)
