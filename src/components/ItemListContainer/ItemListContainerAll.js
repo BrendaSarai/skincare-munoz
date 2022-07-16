@@ -27,28 +27,16 @@ function ItemListContainer () {
 
    useEffect(() => {
       getProducts();
-     /* getProducts()
-          .then(res => {
-            setItems(res)
-            setLoading(false)
-        }
-            )
-          .catch(err => console.log(err))*/
    }, [])
 
   console.log("items:", items)
    return(
 
       <Row>
-         
-         
-            loading ? <div>Cargando...</div> 
-            : 
-            {items.map((item) => {
-               return <ItemList productos={item}/>
-            })}
-            
-         
+         {
+         loading ? <div>Cargando...</div> 
+         : <ItemList productos={items}/>
+         }  
      </Row>
 
    );

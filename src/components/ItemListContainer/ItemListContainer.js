@@ -14,37 +14,32 @@ function ItemListContainer () {
    const [items, setItems] = useState([])
    const [loading, setLoading] = useState(true)
 
-   let { categoria } = useParams();
+   const { categoria } = useParams();
    console.log('categoria:'+categoria);
 
-   const getProductsByCategory = async () =>{
-      const q =query(collection(db, 'skincare'), where ('category', '==', categoria));
-      const querySnapshot = await getDocs(q);
-      const docs = [];
-      querySnapshot.forEach((doc) => {
-         docs.push({...doc.data(), id: doc.id});
-      })
-      setItems(docs);
-      setLoading(false)
-  }
+  
    
 
    useEffect(() => {
+      const getProductsByCategory = async () =>{
+         const q =query(collection(db, 'skincare'), where ('category', '==', categoria));
+         const querySnapshot = await getDocs(q);
+         const docs = [];
+         querySnapshot.forEach((doc) => {
+            docs.push({...doc.data(), id: doc.id});
+         })
+         setItems(docs);
+      };
       getProductsByCategory();
-      /*getProductsByCategory(categoria)
-      .then(res => {
-         setItems(res)
-         setLoading(false)
-     }
-      )
-      .catch(err => console.log(err))*/
-  })
+      setTimeout(() => {
+         setLoading(false);
+      }, 300);
+   },[categoria])
 
   console.log("items:", items)
    return(
 
       <Row>
-         
          {
             loading ? <div>Cargando...</div> 
             : <ItemList productos={items}/>
