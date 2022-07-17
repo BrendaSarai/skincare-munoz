@@ -15,13 +15,13 @@ export const CartProvider = ({ children }) => {
 
 	const totalPay = () => {
 		let total = 0;
-		cart.forEach((item) => (total += item.cantidad * item.price));
+		cart.forEach((item) => (total += item.quantity * item.price));
 		return total;	
 	}
 
 	const totalProducts = () => {
 		let total = 0;
-		cart.forEach((item) => (total += item.cantidad));
+		cart.forEach((item) => (total += item.quantity));
 		return total;
   
 	};
@@ -37,8 +37,11 @@ export const CartProvider = ({ children }) => {
 
 		if (id !== -1) {
 			const newArray = cart
-			const newCant = cart[id].cantidad + item.cantidad
-			newArray[id].cantidad = newCant
+			const newCant = cart[id].quantity + item.quantity
+			newArray[id].quantity = newCant
+			setCart([...newArray])
+			const newStock = cart[id].stock - item.quantity
+			newArray[id].stock = newStock
 			setCart([...newArray])
 			
 		} else {

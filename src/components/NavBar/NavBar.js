@@ -19,7 +19,7 @@ const NavBar = () => {
           <ul className="right">
               <Link to="category/lipstick" className='pag'>Labiales</Link>
               <Link to="category/powder" className='pag'>Maquillaje</Link>
-              <Link to="category/highlighter" className='pag'>Iluminadores</Link>
+              <Link to="category/iluminador" className='pag'>Iluminadores</Link>
               <Link to="cart/"><CartWidget/></Link>
           </ul>
           

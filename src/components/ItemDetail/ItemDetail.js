@@ -18,7 +18,7 @@ const ItemDetail = ({product}) => {
   const onAdd = (n) => {
     message.success(`Se agregaron ${n} productos al carrito.`,3);
     setCantidad(n);
-    addItem({ ...product, cantidad: n })
+    addItem({ ...product, quantity: n })
     
   };
   
