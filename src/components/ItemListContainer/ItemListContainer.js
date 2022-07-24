@@ -1,24 +1,16 @@
 import React, {useState, useEffect} from 'react';
-//import {getProductsByCategory} from "../../data/data.js";
-import { useParams } from 'react-router';
 import  'antd/dist/antd.min.css';
-import {Row} from 'antd';
+import {Row, Spin} from 'antd';
 import ItemList from "../ItemList/ItemList";
-
+import '../../assets/css/styles.css';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig';
 
 
 
-function ItemListContainer () {
+function ItemListContainer ({categoria}) {
    const [items, setItems] = useState([])
    const [loading, setLoading] = useState(true)
-
-   const { categoria } = useParams();
-   console.log('categoria:'+categoria);
-
-  
-   
 
    useEffect(() => {
       const getProductsByCategory = async () =>{
@@ -36,12 +28,15 @@ function ItemListContainer () {
       }, 300);
    },[categoria])
 
-  console.log("items:", items)
+
    return(
 
       <Row>
          {
-            loading ? <div>Cargando...</div> 
+            loading ? 
+            <div className="spin">
+                  <Spin />
+            </div>
             : <ItemList productos={items}/>
          }
      </Row>

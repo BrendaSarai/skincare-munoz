@@ -1,5 +1,5 @@
-import './NavBar.css';
-import logo from './logo-blanco.webp';
+import '../../assets/css/NavBar.css';
+import logo from '../../assets/img/logo-blanco.webp';
 import CartWidget from '../CartWidget/CartWidget';
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';

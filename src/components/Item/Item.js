@@ -1,22 +1,28 @@
-import React from 'react'
-import {Row, Col, Card, message, Typography, Button} from 'antd';
+import React from 'react';
+import {Row, Col, Card, Button} from 'antd';
+import { PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import '../../assets/css/styles.css';
 
-const { Meta } = Card;
-const { Text } = Typography;
 
 const Item = ({name,brand,image_link,price,id}) => {
      
   return (
-     <Row>
-         <Col span={24}>
-            <Card hoverable style={{ width: 250, marginTop: 20, marginRight:20 }}
-              cover={<img src={image_link} height={260}/>}>
-              <Meta title={name} description={brand} />
-              <Text strong>{price}</Text>{<br/>}
-              {<br/>}
-              <Link to={`/item/${id}`} type="primary" block size="large"> Ver más </Link>
-              
+     <Row
+     style={{textAlign:'center' }}>
+        <Col span={24}>
+            <Card 
+               hoverable 
+               style={{ width:340, marginTop: 40, marginRight:30}}
+               cover={<img src={image_link} height={320}/>}>
+               {<h1>{name}</h1>}
+               {<h3>De {brand}</h3>}
+               {<h2>$ {price}.00</h2>}
+              <Link to={`/item/${id}`}>
+                 <Button className="primary" shape="round" icon={<PlusCircleOutlined />} size='large'> 
+                     Ver más 
+                  </Button>
+               </Link>
            </Card>
         </Col>
      </Row>

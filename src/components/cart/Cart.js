@@ -1,37 +1,19 @@
-import { Form, Input, List, Modal, Row, Col, Button } from 'antd';
+import { List, Row, Col, Button} from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons';
 import React, {useContext, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {DeleteOutlined} from '@ant-design/icons';
 import { CartContext } from '../../contexts/CartContext';
-import { collection, addDoc } from "firebase/firestore";
-import { db } from '../../firebase/firebaseConfig';
+import '../../assets/css/styles.css';
+import img from '../../assets/img/cartEmpty.png';
 
-const initialState = {
-	name: '',
-	email: '',
-	phone: '',
-};
+
 
 const Cart = () => {
 
+ 
   const {cart, totalPay, removeItem, clear} = useContext(CartContext);
   const [loading, setLoading] = useState(true)
-  let [data, setData] = useState(initialState);
-	// Este estado está destinado a guardar el id de la compra
-	const [id, setID] = useState('');
-
-
-
-	const comprar = async () => {
-    console.log(data);
-    const docRef = await addDoc(collection(db, "data"), {
-      data
-    });
-    console.log("Document written with ID: ", docRef.id);
-    setID(docRef.id);
-    setData(initialState);
-	};
 
 
 
@@ -45,88 +27,31 @@ const Cart = () => {
   },[cart]);
 
   return (
-    <Row>
-      <Col span={12}>
+    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Col span={18} offset={1} className="gutter-row">
         {loading ? (
-            <div>Cargando...</div>
+          <div style={{textAlign:'center'}}>
+            <img 
+              width={'50%'}
+              height={'50%'}
+              src={img}
+            />
+            <h3>Aún no has agregado productos!</h3>
+            <Link  to="/"><Button size="large" className="primary" icon={<ShoppingCartOutlined/>}>Comprar</Button></Link>
+          </div>  
         ):(
           <List
           itemLayout="vertical"
           size="large"
           pagination={{
-            onChange: page => {
-              console.log(page);
-            },
-            pageSize: 1,
+            pageSize: 3,
           }}
           dataSource={cart}
           footer={
             <div>
               ¿Estás listo para comprar? <h1>Total: {totalPay()}</h1> 
-              <Button type="primary" size="large" 
-                onClick={() => {
-                  Modal.info({
-                    title: 'Ingresa tus datos para terminar tu compra',
-                    width: 600,
-                    icon: <ShoppingCartOutlined/>,
-                    content: (
-                      <Form 
-                        labelCol={{
-                          span: 8,
-                        }}
-                        wrapperCol={{
-                          span: 16,
-                        }}>
-                        <Form.Item 
-                          label="Nombre Completo"
-                          name="name"
-                          rules={[
-                            {
-                              required: true,
-                              message: 'Por favor ingresa tu nombre!',
-                            },
-                          ]}>
-                          <Input
-                            onChange={(e) => {
-                              let nombre = e.target.value;
-                              data = { ...data, name: nombre };
-                            }}
-                          />
-                        </Form.Item>
-                        <Form.Item 
-                          label="Correo electrónico"
-                          name="email"
-                          rules={[{ required: true, message: 'Ingresa tu correo electrónico!' }]}>
-                          <Input
-                            onChange={(e) => {
-                              let siglas = e.target.value;
-                              data = { ...data, email: siglas };
-                            }}
-                          />
-                        </Form.Item>
-                        <Form.Item 
-                          label="Número de teléfono"
-                          name="phone"
-                          rules={[{ required: true, message: 'Ingresa tu número de teléfono!' }]}>
-                          <Input
-                            onChange={(e) => {
-                              let creditos = e.target.value;
-                              data = { ...data, phone: creditos};
-                            }}
-                          />
-                        </Form.Item>
-                      </Form>
-                    ),
-                    okText: 'Actualizar',
-                    cancelText: 'Cancelar',
-                    closable: true,
-                    onOk: async () => {
-                      await comprar(data);
-                    },
-                  });
-                }}
-              >Comprar </Button>
-              <Button type="primary" size="large" onClick={ () => clear()} style={{width:200, marginLeft:360}}>Limpiar carrito</Button>
+              <Link  to="../register/"><Button size="large" className="primary" icon={<ShoppingCartOutlined/>}>Continuar Compra</Button></Link>
+              <Button className="primary" size="large" onClick={ () => clear()} style={{width:200, marginLeft:730}}>Limpiar carrito</Button>
             </div>
           }
           renderItem={item => (
@@ -134,66 +59,28 @@ const Cart = () => {
               key={item.id}
               extra={
                 <img
-                  width={150}
-                  height={150}
+                  width={200}
+                  height={250}
                   alt={item.name}
                   src={item.image_link}
                 />
               }
             >
-              <List.Item.Meta
-                title={<Link to={`/item/${item.id}`}>{item.name}</Link>}
-                description={item.quantity}
-              />
-              {item.price}
+              
+              <h1>{<Link to={`/item/${item.id}`}>{item.name}</Link>}</h1>
+              <h3>Cantidad: {item.quantity}</h3>
+              <h3>Precio Unidad:${item.price}</h3>
+              <h3>Precio Total:${item.quantity * item.price}</h3>
               <br></br>
               <br></br>
               <Button type="danger" size="large"
-                icon={<DeleteOutlined/>} block onClick={ () => removeItem(`${item.id}`)}>Eliminar Producto </Button>
+                icon={<DeleteOutlined/>}  onClick={ () => removeItem(`${item.id}`)}>Eliminar Producto </Button>
             
             </List.Item>
           )}
+          
         />
         )}
-        {/*<Modal
-        title="Ingresa tus datos para terminar tu compra"
-        visible={modal2Visible}
-        okText="Continuar compra"
-        cancelText="Cancelar compra"
-        onCancel={() => setModal2Visible(false)}
-        onOk = {async () => {
-          await comprar(values);
-        }}
-      >
-         <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            form={form}
-          >
-            <Form.Item
-              label="Nombre Completo"
-              name="name"
-              rules={[{ required: true, message: 'Ingresa tu nombre!' }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Correo electrónico"
-              name="email"
-              rules={[{ required: true, message: 'Ingresa tu correo electrónico!' }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Número de teléfono"
-              name="phone"
-              rules={[{ required: true, message: 'Ingresa tu número de teléfono!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Form>
-      </Modal>*/}
       </Col>
     </Row>
     

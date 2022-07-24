@@ -1,8 +1,10 @@
 import { Col, Row, Descriptions, Typography, Card, message, Button} from 'antd';
-import React, { useContext, useState  } from 'react'
+import React, { useContext, useState  } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
+import {ShoppingCartOutlined} from '@ant-design/icons';
 import { CartContext } from '../../contexts/CartContext';
+import '../../assets/css/styles.css';
 
 
 const { Title } = Typography;
@@ -10,7 +12,6 @@ const { Title } = Typography;
 
 
 const ItemDetail = ({product}) => {
-  console.log('item que pasa',product)
   const [cantidad,setCantidad] = useState(0);
 
   const { addItem } = useContext(CartContext);
@@ -42,7 +43,12 @@ const ItemDetail = ({product}) => {
                 ? 
                 <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />
                 : 
-                <Link to='/cart' ><Button type="primary" size="large" block>Terminar mi compra</Button></Link>
+                <div>
+                  <Link to='/cart' ><Button className="primary" size="large" block>Terminar mi compra</Button></Link>
+                  <br></br>
+                  <br></br>
+                  <Link  to="/"><Button size="large" className="primary" block icon={<ShoppingCartOutlined/>}>Seguir comprando</Button></Link>
+                </div>
               } 
            </Card>
       </Col>

@@ -11,7 +11,7 @@ function CartWidget()  {
   return (
     <Space>
       <Badge count={n}>
-        <ShoppingCartOutlined style={{ fontSize: 30 }} />
+        <ShoppingCartOutlined  style={{ fontSize: 30,  color: '#ffffff' }} />
       </Badge>
     </Space>
   )

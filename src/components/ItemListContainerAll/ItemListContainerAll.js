@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react';
-//import {getProducts} from "../../data/data.js";
 import  'antd/dist/antd.min.css';
-import {Row} from 'antd';
+import {Row, Spin} from 'antd';
 import ItemList from "../ItemList/ItemList";
-
-
 import { collection, query, getDocs } from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig';
-
+import '../../assets/css/styles.css';
 
 function ItemListContainer () {
    const [items, setItems] = useState([])
@@ -29,12 +26,14 @@ function ItemListContainer () {
       getProducts();
    }, [])
 
-  console.log("items:", items)
    return(
 
       <Row>
          {
-         loading ? <div>Cargando...</div> 
+         loading ? 
+            <div className="spin">
+                <Spin />
+            </div>
          : <ItemList productos={items}/>
          }  
      </Row>
