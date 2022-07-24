@@ -1,8 +1,8 @@
+import '../../assets/css/Styles.css';
 import React, {useState, useEffect} from 'react';
 import  'antd/dist/antd.min.css';
 import {Row, Spin} from 'antd';
 import ItemList from "../ItemList/ItemList";
-import '../../assets/css/styles.css';
 import { collection, query, getDocs, where } from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig';
 

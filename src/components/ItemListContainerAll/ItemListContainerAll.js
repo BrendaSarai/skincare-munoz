@@ -1,10 +1,10 @@
+import '../../assets/css/Styles.css';
 import React, {useState, useEffect} from 'react';
 import  'antd/dist/antd.min.css';
 import {Row, Spin} from 'antd';
 import ItemList from "../ItemList/ItemList";
 import { collection, query, getDocs } from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig';
-import '../../assets/css/styles.css';
 
 function ItemListContainer () {
    const [items, setItems] = useState([])

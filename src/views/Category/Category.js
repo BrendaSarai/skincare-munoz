@@ -1,7 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router';
-import { Carousel, Row, Col } from 'antd';
-import Carusel from '../../components/Carusel/Carusel';
+import {Row, Col } from 'antd';
 import ItemListContainer from '../../components/ItemListContainer/ItemListContainer';
 
 const Category = () => {

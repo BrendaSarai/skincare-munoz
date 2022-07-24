@@ -1,8 +1,8 @@
+import '../../assets/css/Styles.css';
 import React from 'react';
 import {Row, Col, Card, Button} from 'antd';
 import { PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import '../../assets/css/styles.css';
 
 
 const Item = ({name,brand,image_link,price,id}) => {

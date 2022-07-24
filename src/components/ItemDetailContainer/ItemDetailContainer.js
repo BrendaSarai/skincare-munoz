@@ -1,7 +1,7 @@
+import '../../assets/css/Styles.css';
 import { Row, Spin } from 'antd';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router';
-import '../../assets/css/styles.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 import { collection, query, getDocs, where, documentId } from 'firebase/firestore';

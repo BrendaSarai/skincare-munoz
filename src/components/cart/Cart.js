@@ -1,10 +1,10 @@
+import '../../assets/css/Styles.css';
 import { List, Row, Col, Button} from 'antd';
 import {ShoppingCartOutlined} from '@ant-design/icons';
 import React, {useContext, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {DeleteOutlined} from '@ant-design/icons';
 import { CartContext } from '../../contexts/CartContext';
-import '../../assets/css/styles.css';
 import img from '../../assets/img/cartEmpty.png';
 
 

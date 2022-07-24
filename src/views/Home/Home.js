@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import Carusel from '../../components/Carusel/Carusel';
 import ItemListContainerAll from '../../components/ItemListContainerAll/ItemListContainerAll';
 

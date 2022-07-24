@@ -1,8 +1,8 @@
+import '../../assets/css/Styles.css';
 import {useState, useContext} from 'react'
 import { Form, Input, Row, Col, Button, message } from 'antd';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from '../../firebase/firebaseConfig';
-import '../../assets/css/styles.css';
 import Aviso from '../../components/Aviso/Aviso';
 import { CartContext } from '../../contexts/CartContext';
 

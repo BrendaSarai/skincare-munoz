@@ -1,7 +1,8 @@
+import '../../assets/css/Styles.css';
 import { Button, message} from 'antd';
 import React, { useState } from 'react';
 import {ShoppingCartOutlined} from '@ant-design/icons';
-import '../../assets/css/styles.css';
+
 
 const ItemCount = ({stock,initial,onAdd}) => {
     const [counter, setcounter] = useState(initial);

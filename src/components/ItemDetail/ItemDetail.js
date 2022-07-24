@@ -1,10 +1,11 @@
+import '../../assets/css/Styles.css';
 import { Col, Row, Descriptions, Typography, Card, message, Button} from 'antd';
 import React, { useContext, useState  } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
 import {ShoppingCartOutlined} from '@ant-design/icons';
 import { CartContext } from '../../contexts/CartContext';
-import '../../assets/css/styles.css';
+
 
 
 const { Title } = Typography;
