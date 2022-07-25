@@ -18,3 +18,6 @@ Esta libreria perteneciente a Ant Design se utilizo para incorporar todos los ic
 ### React Router DOM
 
 Esta dependencia se utilizo para implementar la navegación entre las distintas páginas que integran el sitio
+
+## Funcionamiento
+[Enlace al video](https://drive.google.com/file/d/1aRXAmdTaMuUmjH7m8-tlI0lpDLo5yovH/view?usp=sharing)
